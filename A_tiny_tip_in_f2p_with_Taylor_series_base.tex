@@ -1,0 +1,80 @@
+\documentclass{Math_Note}
+
+\title{A Tiny Tip in Fraction2Polynomial with Taylor Series Base}
+\author{Buce-Ithon}
+\newdateformat{mydate}{\twodigit{\THEDAY}{ }\shortmonthname[\THEMONTH], \THEYEAR}
+\date{\today}
+
+\begin{document}
+
+%Title page
+\maketitle
+
+%Content
+\newpage
+\tableofcontents
+\newpage
+
+%Beginning
+\section{Inspiration - Learning from a defination}
+\begin{df}
+    Define the \textbf{Bernoulli number} as
+    \begin{equation}
+        \frac{x}{e^{x}-1} = \Sigma_{n=0}^{\infty}\frac{B_{n}}{n!}x^{n}
+    \end{equation} 
+\end{df}    
+Expanding $e^{x}$ with Taylor series $e^{x}=1+x+\frac{x^{2}}{2!}+\frac{x^{3}}{3!}+\cdots$, 
+
+then we have
+\begin{equation}
+    \begin{split}
+        \frac{x}{e^{x}-1} &= \frac{x}{x+\frac{x^{2}}{2!}+\frac{x^{3}}{3!}+\cdots} = \frac{1}{1+\frac{x}{2!}+\frac{x^2}{3!}+\cdots} \\
+        &=1 - \left(\frac{x}{2!}+\frac{x^2}{3!}+\cdots\right) + \left(\frac{x}{2!}+\frac{x^2}{3!}+\cdots\right)^2-\cdots
+    \end{split}
+\end{equation}
+
+and then
+\begin{equation}
+    \begin{split}
+        &B_{0} = 1, B_{1} = -\frac{1}{2}, B_{2} = \frac{1}{6}, B_{4} = -\frac{1}{30}, B_{6} = \frac{1}{42}, \\
+        &B_{8} = -\frac{1}{30}, B_{10} = \frac{5}{66}, B_{12} = -\frac{691}{2730}, B_{14} = \frac{7}{6}
+    \end{split}
+\end{equation}
+
+%Tool-kit
+\section{Tip or Trick - Tool-kit from it}
+Actually, the step (2) can be abstracted as a mathematical tip as follow:
+\begin{equation}
+    \frac{1}{1+A} = 1 - A + A^{2} -A^{3} + \cdots = \Sigma_{n=0}^{\infty}A^{n}\cdot\left(-1\right)^{n}
+\end{equation}
+\begin{pf}
+    \begin{equation}
+        \begin{split}
+            {\left(1+A\right)}\cdot&{\left(1 - A + A^{2} -A^{3} + \cdots\right)} \\
+            &= {1 - A + A^{2} -A^{3} + \cdots} + {A - A^{2} + A^{3} - A^{4} + \cdots}\\
+            &= 1           
+        \end{split}
+    \end{equation}
+\end{pf}
+
+Application: Simplify fractions $\frac{1}{1+A}$ to polynomials.
+
+%Taylor series base
+\section{Essence - Taylor Series}
+The essencial of this transformation is Taylor Series of function $f(x) = \frac{1}{1+x}$ in $x=0$. \\
+
+\begin{equation}
+    \begin{split}
+        f(x) &= \Sigma_{n=0}^{\infty} \frac{f^{(n)}(x_{0})}{n!}\left(x-x_{0}\right)^{n} \\
+        In \quad &x_{0} = 0, \\
+        f(x) &= \frac{1}{1+x} \\
+        &= 1-x+x^{2}-x^{3}+\cdots = \Sigma_{n=0}^{\infty}(-1)^{n}x^{n}
+    \end{split}
+\end{equation}
+
+%Exercise
+\section{Think twice - exercise questions}
+Taylor Series is an approximation in $x = x_{0} \left(= 0 \quad here\right)$, but 
+why it "seemly" fits all $x$ values in $\mathbb{R}$ in this tip? 
+Is there any other examples like that, or just to say the Taylor series is always accurate?
+\end{document}
