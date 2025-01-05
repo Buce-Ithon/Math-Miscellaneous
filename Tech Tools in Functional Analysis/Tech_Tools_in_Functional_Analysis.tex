@@ -23,6 +23,37 @@ Hope it's helpful for you:).
 %Body
 \section{2 Important Inequalities-Schwartz and Minkowski}
 In 1st section, I want to introduce 2 important inequalities - also conclusion or tech tools - because they are common and useful in much proofs of propositions in 
-my textbook. Besides, there are not unique method to prove this 2 inequalities, so I'll choose the most brief and elegant ones to show.
+my textbook. Besides, there are not unique method to prove this 2 inequalities, so I'll choose the most brief and elegant ones to show. Then I'll show you their contact 
+with Bessel series of inequality and equality and Holder's inequality.
+
+\begin{thm}[Basic]
+    \textbf{Schwartz Inequality:} Let $X$ be a inner product space, then for any $x, y \in X$, we have
+    \begin{equation}
+        \lvert{\langle x, y \rangle}\rvert \leq \parallel{x}\parallel \parallel{y}\parallel
+    \end{equation}
+    \textbf{Minkowski Inequality:} Let $X$ be a normed space, then for any $x, y \in X$, we have
+    \begin{equation}
+        \parallel{x + y}\parallel \leq \parallel{x}\parallel + \parallel{y}\parallel
+    \end{equation}
+\end{thm}
+
+\begin{thm}[Tech]
+    \textbf{Bessel Series of Inequality and Equality:} 
+    \begin{equation}
+        \parallel{f-\Sigma_{k=1}^{N}c_{k}\phi_{k}}\parallel^{2} \geq \parallel{f-\Sigma_{k=1}^{N}{\langle f,\phi_{k} \rangle}\phi_{k}}\parallel^{2} = \parallel{f}\parallel^{2} - \Sigma_{k=1}^{N}\lvert{\langle f,\phi_{k} \rangle}\rvert^{2} \geq 0
+    \end{equation}
+\end{thm}
+
+While $N \to \infty$, we have $\{{\phi_{k}}_{k=1}^{\infty}\}$ is complete orthornormal system, then we have
+
+\begin{thm}[Tech]
+    \textbf{Pasevarll Identity:} $\forall f, f_{1},f_{2} \in L^{2}$
+    \begin{equation}
+        \begin{aligned}
+            1^{\circ}&. \parallel{f}\parallel^{2} = \Sigma_{k=1}^{\infty}\lvert{\langle f,\phi_{k} \rangle}\rvert^{2} \\
+            2^{\circ}&. \parallel{f_{1},f_{2}}\parallel = \Sigma_{k=1}^{\infty}\lvert{\langle f_{1},\phi_{k} \rangle}\overline{\langle f_{2},\phi_{k} \rangle}\rvert
+        \end{aligned}
+    \end{equation}
+\end{thm}
 
 \end{document}
