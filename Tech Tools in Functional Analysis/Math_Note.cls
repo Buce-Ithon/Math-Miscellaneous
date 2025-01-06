@@ -17,6 +17,8 @@
 \definecolor{blue}{RGB}{0,0,255}
 \definecolor{lightblue}{RGB}{26,115,232} %from Chrome Tab-goup
 \definecolor{black}{RGB}{0,0,0}
+\newcommand\abs[1]{$\lvert #1 \rvert$} %absolute value
+\newcommand\norm[1]{$\parallel #1 \parallel$} %norm
 
 \newtheorem{prb}{Problem}
 \newtheorem{thm}{Theorem}[section]
