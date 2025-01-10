@@ -1,0 +1,71 @@
+\documentclass{Math_Note}
+\usepackage{ctex}
+
+\title{Tips on Constructive Proof \\ 构造性证明的技巧}
+\author{Buce-Ithon}
+\newdateformat{mydate}{\twodigit{\THEDAY}{ }\shortmonthname[\THEMONTH], \THEYEAR}
+\date{\today}
+
+\begin{document}
+
+%Title page
+\maketitle
+
+%Content
+\newpage
+\tableofcontents
+\newpage
+
+%Beginning
+\section{Unique Section 单节}
+
+所谓构造性证明，是指使用一种构造性的方法或技术来证明一个命题。
+
+注：该构造性的方法通常来源于题设所给的条件或命题结论的引导。
+
+其特点是，这种证明方法通常看似“新颖独特”，较为难以想象，但是一旦给出，就会恍然大悟，突觉“原来如此”。
+
+下面是一个简单的构造性证明的例子：
+\begin{prb}
+    证明：任意一个函数$f(x)$，都可以表示为一个奇函数与一个偶函数的和。
+\end{prb}
+\begin{pf}
+    令$g(x)=\frac{f(x)+f(-x)}{2}$，$h(x)=\frac{f(x)-f(-x)}{2}$，则有
+    \begin{align*}
+        g(-x)&=\frac{f(-x)+f(x)}{2}=\frac{f(x)+f(-x)}{2}=g(x),\\
+        h(-x)&=\frac{f(-x)-f(x)}{2}=\frac{f(x)-f(-x)}{2}=-h(x).
+    \end{align*}
+    因此，$g(x)$是一个偶函数，$h(x)$是一个奇函数，且$f(x)=g(x)+h(x)$。
+\end{pf}
+
+上述例子中，我们通过巧妙地构造两个函数$g(x)$和$h(x)$(其中$g(x)$为偶函数，$h(x)$为奇函数)，使得$f(x)=g(x)+h(x)$来证明了命题。虽然题目中并没有直接给出
+关于$g(x)$和$h(x)$的具体信息，但我们还是做到了。
+
+那么接下来我们就来讲一讲运用构造性证明过程中的一些技巧，抑或是提示(以帮助大家更好地理解、乃至掌握构造性证明)。
+
+\begin{enumerate}
+    \item 构造性证明并非凭空得来的，所有构造性思路一定来源于题设或是对命题的常用经验。
+    \item 构造性证明的关键在于“构造”一个或者是多个对象，这些构造出来的对象一定与我们要证明的命题最终的结论有着密切的联系，可以说两者是相干的。
+    \item 构造性证明的过程中，任何引入的辅助构造的内容，大多来自于对命题或部分命题的进一步分析或常用数学经验，它们是与命题二次相关的知识。
+    \item 在构造性证明之前或之中，不断自上到下重新分析命题、抑或是自下到上(从结论出发)的分析，都有助于我们更好地将证明过程进行下去。
+\end{enumerate}
+
+下面，我们来举一个数论中的构造性证明的例子重温一遍上述过程：
+\begin{prb}
+    证明：任意一个正整数$n$，都有$n=\Sigma_{d\mid n}{\phi(d)}$，其中$\phi(d)$是欧拉函数。
+\end{prb}
+\begin{pf}
+    这个问题可以用Mobius反演公式很快解决，不过为了演示构造性证明的过程，我们这里用另一种更容易理解的方法来证明.
+
+    考虑到，若$gcd(k,n)=d$，则有$gcd(\frac{k}{d},\frac{n}{d})=1, k<n$.
+
+    接下来，我们来构造$f(x): gcd(k,n)=x的k的个数$， 则有$n=\Sigma_{i=1}^{n}{f(i)}$.
+
+    由此，我们可以发现$f(x)=\phi(\frac{n}{x})$，从而有$n=\Sigma_{d\mid n}{\phi(\frac{n}{d})}$. 
+    由$d$与$\frac{n}{d}$的对称性，我们有$n=\Sigma_{d\mid n}{\phi(d)}$. 原命题即证. $\blacksquare$ %$\qedsymbol$
+\end{pf}
+
+上述，便是笔者在诸多构造性证明中，总结出的一些技巧或者说提示，供大家参考与学习。
+
+
+\end{document}
