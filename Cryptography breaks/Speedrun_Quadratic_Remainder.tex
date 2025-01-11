@@ -1,0 +1,96 @@
+\documentclass{Math_Note}
+
+\title{Speedrun Quadratic Residue \\ \small{Cryptography Breaks}}
+\author{Buce-Ithon}
+\newdateformat{mydate}{\twodigit{\THEDAY}{ }\shortmonthname[\THEMONTH], \THEYEAR}
+\date{\today}
+
+\begin{document}
+
+%Title page
+\maketitle
+
+%Content
+\newpage
+\tableofcontents
+\newpage
+
+%Beginning
+\section{Unique Section}
+
+The definition of \underline{quadratic remainder} comes from the expansion of perfect square numbers($x^2$) in the integer system into the multiplicative group modulo $q$.
+
+\begin{df}
+    \textbf{Quadratic Residue} \par
+    $\forall\ prime\ number\ p$,$a \in \mathbb{Z}_{p}$, $a$ is a quadratic residue modulo $p$ if $\exists\ integer\ x$ such that $x^2 \equiv a \pmod{p}$.
+    Otherwise, $a$ is a quadratic non-residue modulo $p$.
+\end{df}
+
+\begin{df}
+    \textbf{Legendre Symbol} \par
+    $\forall\ odd\ prime\ number\ p$,$a \in \mathbb{Z}_{p}$, the Legendre symbol is defined as:
+    \[
+        \left(\frac{a}{p}\right) = 
+        a^{\frac{p-1}{2}}\ mod\ p\equiv
+        \begin{cases}
+            1 & \text{if $a$ is a quadratic residue modulo $p$} \\
+            -1 & \text{if $a$ is a quadratic non-residue modulo $p$} \\
+            0 & \text{if $a \equiv 0 \pmod{p}$}
+        \end{cases}
+    \]
+\end{df}
+
+\begin{prp}
+    \begin{enumerate}
+        \item $\left(\frac{ab}{p}\right)=\left(\frac{a}{p}\right)\left(\frac{b}{p}\right)$
+        \item If $a \equiv b \pmod{p}$, then $\left(\frac{a}{p}\right)=\left(\frac{b}{p}\right)$
+    \end{enumerate}
+\end{prp}
+
+\begin{thm}
+    \textbf{Gauss Law of Quadratic Reciprocity} \par
+    $\forall\ odd\ prime\ numbers\ p$ and $q$, the Legendre symbol satisfies:
+    \[
+        \left(\frac{p}{q}\right)\left(\frac{q}{p}\right)=(-1)^{\frac{p-1}{2}\frac{q-1}{2}}
+    \]
+\end{thm}
+
+\begin{df}
+    \textbf{Jacobi Symbol} \par
+    $\forall\ odd\ integer\ n$ and $a \in \mathbb{Z}_{n}$, $gcd(n,a)=1$, the Jacobi symbol is defined as:
+    \[
+        \left(\frac{a}{n}\right) = 
+        \prod_{i=1}^{k}\left(\frac{a}{p_i}\right)^{e_i}
+    \]
+    where $n=\prod_{i=1}^{k}p_i^{e_i}$ is the prime factorization of $n$.
+\end{df}
+
+Moreover, 2 important theorems should be mentioned here.
+
+\begin{thm}
+    \text{Euler's Theorem} \par
+    $\forall\ integer\ a$ and $n$, $gcd(a,n)=1$, then:
+    \[
+        a^{\phi(n)}\equiv 1\pmod{n}
+    \]
+\end{thm}
+
+\begin{thm}
+    (Collary)\text{Fermat's Little Theorem} \par
+    $\forall\ prime\ number\ p$ and integer $a$, then:
+    \[
+        a^{p-1}\equiv 1\pmod{p}
+    \]
+\end{thm}
+
+Last but not least, let's come back to cryptography, looking at some applications of Legendre symbol.
+
+\begin{thm}
+    \textbf{Solovay-Strassen Primality Test} \par
+    \begin{enumerate}
+        \item $\forall\ odd\ prime\ p$, then $\forall\ integer\ a$, we have $\left(\frac{a}{p}\right) \equiv a^{\frac{p-1}{2}}\ mod\ p$.
+        \item $\forall\ odd\ composite\ n$, then there are at least 50\% integer $a$, s.t. $\left(\frac{a}{n}\right) \equiv a^{\frac{n-1}{2}}\ mod\ n$ is false.
+    \end{enumerate}
+\end{thm}
+
+\end{document}
