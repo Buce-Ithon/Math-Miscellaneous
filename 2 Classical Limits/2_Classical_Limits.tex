@@ -1,0 +1,126 @@
+\documentclass{Math_Note}
+\setlength{\parindent}{2em}
+
+\title{\textbf{2Classical Limits}}
+\author{Buce-Ithon}
+\newdateformat{mydate}{\twodigit{\THEDAY}{ }\shortmonthname[\THEMONTH], \THEYEAR}
+\date{\today}
+
+\begin{document}
+% Title page
+\maketitle
+
+% Content
+\newpage
+\tableofcontents
+\newpage
+
+\begin{section}{$\lim_{ n \to \infty }\frac{a^{n}}{n^{k}}$}
+The problem is: 
+\[\lim_{ n \to \infty }\frac{a^{n}}{n^{k}}\quad \text{where } a>1,\ k>0\]
+\newline
+
+\fbox{\begin{minipage}{0.95\textwidth}
+\begin{sol*}[Solution1]
+    Based on \textbf{Binomial Theorem} \\
+    $a^{n}=[a\triangleq 1+\lambda]=1+n\lambda+\frac{n(n-1)}{2}\lambda^{2}+\cdots>\frac{n(n-1)}{2}\lambda^{2}$ \\
+    also $n-1>\frac{n}{2},\ as\ n>2$, then $a^{n} > \frac{n^{2}}{4}(a-1)^{2}$. \\
+    As $k=1$, $\lim_{ n \to \infty } \frac{a^{n}}{n} = \infty$, and as $k>1$, $\lim_{ n \to \infty } \frac{a^{n}}{n^{k}}=\lim_{ n \to \infty } (\frac{(a^{\frac{1}{k}})^{n}}{n})^{k}=\infty$.
+\end{sol*}   
+\end{minipage}}
+\newline\newline
+
+\fbox{\begin{minipage}{0.95\textwidth}
+\begin{sol*}[Solution2]
+    Based on \textbf{L'Hospital's Rule} \\
+    $\lim_{ n \to \infty }\frac{a^{n}}{n^{k}}=\lim_{ n \to \infty }\frac{\ln a\cdot a^{n}}{k\cdot n^{k-1}}=\lim_{ n \to \infty }\frac{(\ln a)^{2}\cdot a^{n}}{k(k-1)\cdot n^{k-2}}=\cdots=\lim_{ n \to \infty }\frac{(\ln a)^{k}\cdot a^{n}}{k!}=\infty$.
+\end{sol*}   
+\end{minipage}}
+\newline\newline
+
+\fbox{\begin{minipage}{0.95\textwidth}
+\begin{sol*}[Solution3]
+    (Haven't found a totally different solution yet.)
+\end{sol*}   
+\end{minipage}}
+\newline\newline
+
+\end{section}
+
+\begin{section}{$\lim_{ n \to \infty } n^{\frac{1}{n}}$}
+The problem is:  
+\[\lim_{ n \to \infty } n^{\frac{1}{n}}\]
+\newline
+
+\fbox{\begin{minipage}{0.95\textwidth}
+\begin{sol*}[Solution1]
+    Due to 1. $a^{n} > \frac{n^{2}}{4}(a-1)^{2}$, let $a = n^{\frac{1}{n}}$, then $0 < n^{\frac{1}{n}} < \frac{2}{\sqrt{n}}$.
+    Thus $\lim_{ n \to \infty } n^{\frac{1}{n}}=1$.    
+\end{sol*}
+\end{minipage}}
+\newline\newline
+
+\fbox{\begin{minipage}{0.95\textwidth}
+\begin{sol*}[Solution2]
+Based on Mean Value Inequalities Chain(GM-AM):
+$n^{\frac{1}{n}}=(\sqrt{n}\cdot\sqrt{n}\cdot 1\cdots 1)^{\frac{1}{n}} \leq \frac{2\sqrt{n}+n-2}{n}$,
+then $\lim_{ n \to \infty } n^{\frac{1}{n}} = 1$.
+\end{sol*}
+\end{minipage}}
+\newline\newline
+ 
+\end{section}
+
+\newpage
+
+\begin{section}{Some repurposed variants}
+
+\begin{subsection}{$\lim_{ n \to {+}\infty } \sqrt[n]{n!}$}
+The problem is:  
+\[\lim_{ n \to {+}\infty } \sqrt[n]{n!}\]
+\newline
+
+\fbox{\begin{minipage}{0.95\textwidth}
+\begin{sol*}[Solution1]
+    Based on \textbf{Stirling's Approximation}: $n! \sim \sqrt{2\pi n}(\frac{n}{e})^{n}$, then $\sqrt[n]{n!} \sim \sqrt[n]{\sqrt{2\pi n}}(\frac{n}{e}) = \frac{n}{e}\cdot(2\pi n)^{\frac{1}{2n}}$.
+    Thus $\lim_{ n \to {+}\infty } \sqrt[n]{n!} = \infty$.
+\end{sol*}
+\end{minipage}}
+\newline\newline
+
+\fbox{\begin{minipage}{0.95\textwidth}
+\begin{sol*}[Solution2]
+    $n! \geq \left( \frac{n}{2} \right)^{\frac{n}{2}}$ because half of the factors are at least $\frac{n}{2}$
+\end{sol*}
+\end{minipage}}
+\newline\newline
+
+\fbox{\begin{minipage}{0.95\textwidth}
+\begin{sol*}[Solution3]
+    Consider Taylor series, $e^{x} \geq \frac{x^{n}}{n!},\ \forall x \geq 0,n\in\mathbb{N}$, then $n!\geq \frac{x^{n}}{e^{x}}$, take $x=n$ problem solved.
+\end{sol*}
+\end{minipage}}
+\newline\newline
+
+\fbox{\begin{minipage}{0.95\textwidth}
+\begin{sol*}[Solution4]
+    Based on \textbf{Stolze Cesaro Theorem}: \\
+    $\lim\limits_{ n \to {+}\infty } \sqrt[n]{n!}=\lim\limits_{ n \to {+}\infty } \frac{n!^{\frac{1}{n}}}{1}=\lim\limits_{ n \to {+}\infty } \frac{\ln(n!)}{n}=\lim_{ n \to {+}\infty } \frac{\ln(n)+\ln(n-1)+\cdots+\ln(1)}{n}$, then apply Stolze Cessaro Theorem, 
+    $\lim\limits_{ n \to {+}\infty } \frac{\ln(n)+\ln(n-1)+\cdots+\ln(1)}{n}=\lim\limits_{ n \to {+}\infty } \frac{\ln(n+1)}{1}=$, then $\lim\limits_{ n \to {+}\infty } \sqrt[n]{n!}=\infty$.
+\end{sol*}
+\end{minipage}}
+\newline\newline
+
+\fbox{\begin{minipage}{0.95\textwidth}
+\begin{sol*}[Solution5]
+    Using a multiplicative variant of Gauss' trick we get:
+    $(n!)^2=(1\cdot n)(2\cdot(n-1))\cdots((n-1)\cdot 2)(n\cdot 1) \geq n^n$.
+\end{sol*}
+\end{minipage}}
+\newline\newline
+
+\end{subsection}
+
+\end{section}
+
+\end{document}
