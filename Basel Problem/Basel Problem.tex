@@ -1,0 +1,61 @@
+\documentclass{Math_Note}
+\setlength{\parindent}{2em}
+
+\title{\textbf{Basel Problem}}
+\author{Buce-Ithon}
+\newdateformat{mydate}{\twodigit{\THEDAY}{ }\shortmonthname[\THEMONTH], \THEYEAR}
+\date{\today}
+
+\begin{document}
+% Title page
+\maketitle
+
+% Content
+\newpage
+\tableofcontents
+\newpage
+
+% \setcounter{section}{-1}
+\newpage
+\section{Basel Problem}
+\subsection{$\zeta(2)=\sum\limits_{n=1}^{\infty}\frac{1}{n^2}$}
+\begin{prb}
+    Calculate (or prove) $$\zeta(2)=\sum\limits_{n=1}^{\infty}\frac{1}{n^2}=\frac{\pi^2}{6}.$$
+\end{prb}
+
+\fbox{\begin{minipage}{0.95\textwidth}
+\begin{sol*}
+    Method 1. Double Integral. \\
+    Consider the double integral $I=\iint_{D_1} \frac{1}{1-xy} \, dx \, dy$, where $D_1=\{(x,y):0<x<1,0<y<1\}$. \\
+    \begin{equation*}
+        \begin{split}
+            \iint_{D_1} \frac{\, dx \, dy}{1-xy} &= \text{/Generalized power series multiplication theorem/} \\
+            &= \iint_{D_1} \sum_{n=0}^{\infty} (xy)^n \, dx \, dy = \int_{0}^{1} \left( \int_{0}^{1} \sum_{n=0}^{\infty} (xy)^n \, dx \right) dy \\
+            &= \int_{0}^{1} \sum_{n=1}^{\infty} \frac{y^{n-1}}{n} \, dy = \sum_{n=1}^{\infty} \frac{1}{n^2}.
+        \end{split}
+    \end{equation*}
+    \center{/Transformation of coordinates or variable substitution/}
+    \begin{equation*}
+        \begin{split}
+            [ x=\frac{u-v}{\sqrt{2}}, y&=\frac{u+v}{\sqrt{2}}, \frac{D(x,y)}{D(u,v)}=\begin{vmatrix} x'_u & x'_v \\ y'_u & y'_v \end{vmatrix} \\
+            \Leftarrow (u,v)^T&=\begin{pmatrix} \cos -\frac{\pi}{4} & -\sin -\frac{\pi}{4} \\ \sin -\frac{\pi}{4} & \cos -\frac{\pi}{4} \end{pmatrix}(x,y)^T ]\\
+        \end{split}
+    \end{equation*}
+    %\begin{figure}[H]
+        %\centering
+        %\includegraphics[scale=0.24]{"./Figures/250822_1.png"}
+    %\end{figure}
+    \begin{equation*}
+        \begin{split}
+            I &= \iint_{D_2} \frac{1}{1-\frac{u^2-v^2}{2}}\cdot 1 \, du \, dv \\
+            &= 2\left[ \iint_{D_21} \frac{1}{2-u^2+v^2} \, du \, dv + \iint_{D_22} \frac{1}{2-u^2+v^2} \, du \, dv \right] \\
+            &= 4\left[ \int_{0}^{\frac{\sqrt{2}}{2}} \left( \int_{0}^{u} \frac{dv}{2-u^2+v^2} \right) du + \int_{\frac{\sqrt{2}}{2}}^{\sqrt{2}} \left( \int_{0}^{\sqrt{2}-u} \frac{dv}{2-u^2+v^2} \right) du \right] \\
+            &= [u\triangleq\sqrt{2}\sin \theta, v\triangleq\sqrt{2}\cos \theta] \\
+            &= \frac{\pi^2}{18} + \frac{\pi^2}{9} = \frac{\pi^2}{6}.
+        \end{split}
+    \end{equation*}
+    i.e. $\zeta(2)=\sum\limits_{n=1}^{\infty}\frac{1}{n^2}=\frac{\pi^2}{6}$.
+\end{sol*}
+\end{minipage}}
+
+\end{document}
